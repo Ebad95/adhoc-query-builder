@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+
+import { Tables } from "./components/Tables"
+import { Columns } from "./components/Columns"
+
 
 function App() {
+  const [tables, getTables] = useState([]);
+
+  useEffect(() => {
+    fetch('/get_tables').then(response => 
+      response.json().then(data => {
+        getTables(data.tables);
+      })
+      );
+  }, []);
+
+  
+
+  console.log(tables)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+          <Tables tables={tables}/>
+          <Columns />
+      </div>
     </div>
   );
 }
