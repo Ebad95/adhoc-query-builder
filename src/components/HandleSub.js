@@ -1,35 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { List } from "semantic-ui-react"
+import Axios from 'axios'
+import { GenerateSql } from "./GenerateSql"
 
-export const HandleSub=()=>{
-    const [columns, getColumns] = useState([]);
-   
-    const recipeUr = 'http://localhost:5000/get_columns';
-    const requestMetadat = {
-        mode:'no-cors',
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          }
+export const HandleSub=({columns})=>{
+    const [colum, setCol]=React.useState([]);
+    const handler=e=> {
+        console.log(colum)
+        Axios({
+            method: 'post',
+            url: 'http://localhost:5000/column',
+            data: {
+              column: [colum]
+            }
+          }).then((response) => {
+            console.log(response);
+          }, (error) => {
+            console.log(error);
+          });
+       e.preventDefault();
     }
-    fetch(recipeUr, requestMetadat)
-            .then(res => res.json())
-            .then(recipes => {
-                console.log(recipes)
-            });
-    
 
   return (
+      <div>
+          <form onSubmit={handler}>
     <List className="list">
     {columns.map(column => {
     return (
         <List.Item>
-            <input type="checkbox" value={column} />
+            <input type="checkbox" value={column} onChange={ (event) =>{setCol(oldArray => [...oldArray,event.target.value])}} />
             <label> {column}</label>
         </List.Item>
     )})
     }
 </List>
+<button type="submit">Submit Columns</button>
+</form>
+<GenerateSql />
+</div>
   )
 }
