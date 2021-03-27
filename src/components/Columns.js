@@ -10,7 +10,7 @@ export const Columns=()=>{
 
         Axios({
             method: 'get',
-            url: 'http://localhost:5000/get_columns'
+            url: '/get_columns'
           }).then((response) => {
             console.log(response.data.columns);
             setColumn(response.data.columns)
@@ -22,9 +22,9 @@ export const Columns=()=>{
     console.log(column)
 
     return (
-     <div>
+     <div className="getcol">
          <form onSubmit={Handler}>
-        <button type="submit" onClick={()=>{setChec(!chec)}}>Get Columns</button>
+        <button type="submit"  class="btn btn-success" onClick={()=>{setChec(!chec)}}>Get Columns</button>
         </form>
         <HandleSub columns={column} />
      </div>

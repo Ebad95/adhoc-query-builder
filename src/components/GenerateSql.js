@@ -7,7 +7,7 @@ export const GenerateSql=()=>{
 
         Axios({
             method: 'get',
-            url: 'http://localhost:5000/generate_sql'
+            url: '/generate_sql'
           }).then((response) => {
             console.log(response.data.SQL);
             setSql(response.data.SQL);
@@ -18,11 +18,11 @@ export const GenerateSql=()=>{
         }
        
     return (
-        <div>
+        <div class="container-fluid">
             <form onSubmit={Handler}>
-          <button type="submit">Generate Sql</button>
+          <button type="submit" class="btn btn-success">Generate Sql</button>
           </form>
-          {sql?<p>{sql}</p>:null}
+          <div className="sql">{sql?<p>{sql}</p>:null}</div>
        </div>
     )
 }

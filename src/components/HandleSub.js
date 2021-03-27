@@ -1,7 +1,7 @@
 import React from 'react'
 import { List } from "semantic-ui-react"
 import Axios from 'axios'
-import { GenerateSql } from "./GenerateSql"
+import { GenerateSql } from './GenerateSql'
 
 export const HandleSub=({columns})=>{
     const [colum, setCol]=React.useState([]);
@@ -9,9 +9,9 @@ export const HandleSub=({columns})=>{
         console.log(colum)
         Axios({
             method: 'post',
-            url: 'http://localhost:5000/column',
+            url: '/column',
             data: {
-              column: [colum]
+              column: colum
             }
           }).then((response) => {
             console.log(response);
@@ -22,19 +22,21 @@ export const HandleSub=({columns})=>{
     }
 
   return (
-      <div>
+      <div className="Col" class="container-md">
+        <h1 className="hm" class="p-3 mb-2 bg-info text-white">Columns</h1><hr />
           <form onSubmit={handler}>
     <List className="list">
     {columns.map(column => {
     return (
         <List.Item>
-            <input type="checkbox" value={column} onChange={ (event) =>{setCol(oldArray => [...oldArray,event.target.value])}} />
+            <input type="checkbox" class="form-check-input" value={column} onChange={ (event) =>{setCol(oldArray => [...oldArray,event.target.value])}} />
             <label> {column}</label>
         </List.Item>
     )})
     }
 </List>
-<button type="submit">Submit Columns</button>
+<button type="submit" class="btn btn-success">Submit Columns</button>
+<br/>
 </form>
 <GenerateSql />
 </div>

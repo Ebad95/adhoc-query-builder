@@ -23,19 +23,19 @@ export const Tables = ({ tables }) => {
     }
     return (
         <div className="table">
-            <Header style={{backgroundColor:"blue"}}>Tables</Header><hr />
+           <h1 className="hm" class="p-3 mb-2 bg-info text-white">Tables</h1><hr />
             <form onSubmit={Handler}>
         <List className="list">
             {tables.map(table => {
             return (
                 <List.Item key={table.id}>
-                    <input type="checkbox" value={table} defaultChecked={false} onChange={ (event) =>{setTable(event.target.value)}}/>
-                    <label> {table}</label>
+                    <input type="checkbox" class="form-check-input" value={table} defaultChecked={false} onChange={ (event) =>{setTable(event.target.value)}}/>
+                    <label> {  table}</label>
                 </List.Item>
             )})
             }
         </List>
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
         </form>
         </div>
     )
