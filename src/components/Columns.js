@@ -22,9 +22,10 @@ export const Columns=()=>{
     console.log(column)
 
     return (
-     <div className="getcol">
+     <div className="getcol" class="container-md">
          <form onSubmit={Handler}>
         <button type="submit"  class="btn btn-success" onClick={()=>{setChec(!chec)}}>Get Columns</button>
+        <hr />
         </form>
         <HandleSub columns={column} />
      </div>

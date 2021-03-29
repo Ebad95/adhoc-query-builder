@@ -2,6 +2,7 @@ import React from 'react'
 import { List } from "semantic-ui-react"
 import Axios from 'axios'
 import { GenerateSql } from './GenerateSql'
+import { Conditions } from './Conditions'
 
 export const HandleSub=({columns})=>{
     const [colum, setCol]=React.useState([]);
@@ -36,9 +37,9 @@ export const HandleSub=({columns})=>{
     }
 </List>
 <button type="submit" class="btn btn-success">Submit Columns</button>
-<br/>
+<hr />
 </form>
-<GenerateSql />
+<Conditions columns={columns} />
 </div>
   )
 }

@@ -30,7 +30,7 @@ export const Tables = ({ tables }) => {
             return (
                 <List.Item key={table.id}>
                     <input type="checkbox" class="form-check-input" value={table} defaultChecked={false} onChange={ (event) =>{setTable(event.target.value)}}/>
-                    <label> {  table}</label>
+                    <label>{table}</label>
                 </List.Item>
             )})
             }

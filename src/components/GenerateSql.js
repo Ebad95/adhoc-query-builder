@@ -1,5 +1,6 @@
 import React from 'react'
 import Axios from 'axios';
+import { Conditions } from "./Conditions"
 
 export const GenerateSql=()=>{
     const [sql ,setSql]=React.useState("");
@@ -18,7 +19,7 @@ export const GenerateSql=()=>{
         }
        
     return (
-        <div class="container-fluid">
+        <div class="container-md">
             <form onSubmit={Handler}>
           <button type="submit" class="btn btn-success">Generate Sql</button>
           </form>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { Tables } from "./components/Tables"
 import { Columns } from "./components/Columns"
+import { GenerateSql } from './components/GenerateSql';
 
 
 function App() {
